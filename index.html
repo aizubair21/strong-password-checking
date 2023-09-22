@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strong Password Check</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="viewBox">
+        <div class="viewBox-body">
+            
+            <div class="left">
+                <div class="title">
+                    Enter Your Password 
+                </div>
+    
+                <!-- profile  -->
+                <div class="profile">
+                    <div class="icon">
+                        <img src="img/user.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <span>Business Account </span>
+                        <div class="name">Lorem ipsum</div>
+                    </div>
+                </div>
+    
+                <!-- form  -->
+                <div class="form">
+                    <!-- password  -->
+                    <div class="input-filed">
+    
+                        <label class="label" for="password">Password </label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <img src="img/close-lock.png" alt="">
+                            </div>
+                            <input type="password" class="form-control input" id="password" placeholder="********" autofocus>
+                            <button class="eye-btn">
+                                <img src="img/open-lock.png" data-tg="eye-open" class="eye eye-open" alt="">
+                                <img src="img/close-lock.png" data-tg="eye-close" class="eye eye-close" alt="">
+                            </button>
+                        </div>
+                        <div class="form_text"></div>
+    
+                    </div>
+                </div>
+    
+                <!-- submit -->
+                <div>
+                    <button class="sub-btn">check</button>
+    
+                </div>
+    
+                <!-- reset link  -->
+                <a href="#" class="reset-link">Reset Passowrd</a>
+    
+                <!-- check result  -->
+                <div class="result">
+                    <h6 class="h5 result-title"> Look that it's strong : </h6>
+                    <!-- <p><b>Your account is safe and secure.</b></p> -->
+                    <div class="result-indicator"> 
+                        <div class="indicate"></div>
+                        <div class="indicate-percent"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="devider"></div>
+    
+            <div class="right">
+                <div class="title">
+                    To be strengthened :
+                    <h6>To get strong password please follow the bellow instruction.</h6>
+                </div>
+
+                <ol class="right-list">
+                    <li class="list_item spe_cr">Start with special character.</li>
+                    <li class="list_item uppercase"> Upper case character </li>
+                    <li class="list_item number"> Include number. </li>
+                    <li class="list_item lowercase"> Lower case characters </li>
+                    <li class="list_item special"> Include special character </li>
+                    <li class="list_item space"> No spaces allowed in password! </li>
+                    <li class="list_item min_cr">Minimun 12 character.</li>
+                    <li class="list_item max_char">Maximum of 30 charactesr!</li>
+
+                </ol>
+            </div>
+        
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
