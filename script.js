@@ -76,7 +76,14 @@ function checkAndShow() {
         }
 
         //check if password start with special character or not with regular expression
-       checkSpecialChar();
+        // checkStartWithSpChr();
+        if(password.search(/^[!@#$%^&*]/g) == 0){
+            checkAdnShowList(1,"spe_cr");
+            checkAndShowPercent();
+        }else{
+            checkAdnShowList(0, "spe_cr");
+            // checkAndShowPercent(1);
+        }
 
         //check if password inlude Uppercase character 
         checkUpperCase();
@@ -89,6 +96,15 @@ function checkAndShow() {
 
         //check special character include or not
         checkSpecialChar();
+    }
+
+    if (pasInput.value == "") {
+        listItem.forEach(li=>{
+            li.classList.remove('is_error');
+            li.classList.remove("is_correct");
+            li.classList.remove('invisible')
+            checkAndShowPercent(1);
+        })
     }
 
 }
@@ -130,19 +146,19 @@ function checkAdnShowList(is_cor, tr) {
 }
 
 //set interval to get all default if input make empty
-setInterval(() => {
-    // checkAdnShowList();
-    if (pasInput.value == "") {
-        listItem.forEach(li=>{
-            li.classList.remove('is_error');
-            li.classList.remove("is_correct");
-            li.classList.remove('invisible')
-            checkAndShowPercent(1);
-        })
-    }
-    // console.log(pasInput.value);
+// setInterval(() => {
+//     // checkAdnShowList();
+//     if (pasInput.value == "") {
+//         listItem.forEach(li=>{
+//             li.classList.remove('is_error');
+//             li.classList.remove("is_correct");
+//             li.classList.remove('invisible')
+//             checkAndShowPercent(1);
+//         })
+//     }
+//     // console.log(pasInput.value);
     
-}, 200);
+// }, 1000);
 
 //check password and calculate average range and show to result range indicator with number percentage
 function checkAndShowPercent(is_default) {
@@ -175,6 +191,18 @@ function animation() {
     // console.log(pasInput.value);
     requestAnimationFrame(animation);
 }
+// check start with any special char 
+async function checkStartWithSpChr(){
+    // var regExp = /[!@#$%^&*]/g;
+    if(password.match(/^[!@#$%^&*]/g) == 0){
+       checkAdnShowList(1,"spe_cr");
+       checkAndShowPercent();
+   }else{
+       checkAdnShowList(0, "spe_cr");
+       // checkAndShowPercent(1);
+   }
+
+}
 
 //check number cound 
 async function checkNumberCount () {
@@ -188,19 +216,6 @@ async function checkNumberCount () {
         // checkAndShowPercent(1);
     }
     return true;
-}
-
-// check start with any special char 
-async function checkStartWithSpChr(){
-     // var regExp = /[!@#$%^&*]/g;
-     if(password.search(/^[!@#$%^&*]/g) == 0){
-        checkAdnShowList(1,"spe_cr");
-        checkAndShowPercent();
-    }else{
-        checkAdnShowList(0, "spe_cr");
-        // checkAndShowPercent(1);
-    }
-
 }
 
 // check uppercase
@@ -227,7 +242,6 @@ async function checkLowerCase() {
     return true;
 }
 
-
 //check special character
 async function checkSpecialChar() {
     let specialCharCount = pasInput.value.match(/[!@#$%^&*]/g);
@@ -239,5 +253,7 @@ async function checkSpecialChar() {
     }
     return true;
 }
+
+//check password start with special charcater
 
 animation()
