@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strong Password Check</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="viewBox">
         <div class="viewBox-body">
-            
+
             <div class="left">
                 <div class="title">
-                    Enter Your Password 
+                    Enter Your Password
                 </div>
-    
+
                 <!-- profile  -->
                 <div class="profile">
                     <div class="icon">
@@ -25,54 +27,55 @@
                         <div class="name">Lorem ipsum</div>
                     </div>
                 </div>
-    
+
                 <!-- form  -->
                 <div class="form">
                     <!-- password  -->
                     <div class="input-filed">
-    
+
                         <label class="label" for="password">Password </label>
                         <div class="input-group">
                             <div class="input-group-text">
                                 <img src="img/close-lock.png" alt="">
                             </div>
-                            <input type="password" class="form-control input" id="password" placeholder="********" autofocus>
+                            <input type="password" class="form-control input" id="password" placeholder="********"
+                                autofocus>
                             <button class="eye-btn">
                                 <img src="img/open-lock.png" data-tg="eye-open" class="eye eye-open" alt="">
                                 <img src="img/close-lock.png" data-tg="eye-close" class="eye eye-close" alt="">
                             </button>
                         </div>
                         <div class="form_text"></div>
-    
+
                     </div>
                 </div>
-    
+
                 <!-- submit -->
                 <div>
                     <button class="sub-btn">check</button>
-    
+
                 </div>
-    
-                <!-- reset link  -->
-                <a href="#" class="reset-link">Reset Passowrd</a>
-    
+
+                <!-- generate password  -->
+               <button class="generate_btn" >generate </button>
+
                 <!-- check result  -->
                 <div class="result">
                     <h6 class="h5 result-title"> Look that it's strong : </h6>
                     <!-- <p><b>Your account is safe and secure.</b></p> -->
-                    <div class="result-indicator"> 
+                    <div class="result-indicator">
                         <div class="indicate"></div>
                         <div class="indicate-percent"></div>
                     </div>
                 </div>
             </div>
-    
+
             <div class="devider"></div>
-    
+
             <div class="right">
                 <div class="title">
                     To be strengthened :
-                    <h6>To get strong password please follow the bellow instruction.</h6>
+                    <p style="font-size:10px">To get strong password please follow the bellow instruction.</p>
                 </div>
 
                 <ol class="right-list">
@@ -87,9 +90,10 @@
 
                 </ol>
             </div>
-        
+
         </div>
     </div>
 </body>
 <script src="script.js"></script>
+
 </html>
