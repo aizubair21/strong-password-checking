@@ -6,11 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strong Password Check</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="outer.css">
 </head>
 
 <body>
     <div class="viewBox">
         <div class="viewBox-body">
+
+            <!-- password wrapper  -->
+            <div id="generate_wrapper">
+                <div class="gen_pas_header">
+                    <div class="title">Generate Strong Password</div>
+                    <button class="gen_pas_close_btn"
+                        onclick="this.parentElement.parentElement.classList.remove('password_active')">&times</button>
+                </div>
+                <hr>
+
+                <div class="gen_pas_body">
+                    <div class="box gen_pas_label">
+                        <label class="label" for="passLength">Password Length (Minimum 6 characters):</label>
+                        <div class="PB-range-slider-div">
+                            <input type="range" min="12" max="100" value="12" class="PB-range-slider" id="myRange">
+                            <p class="PB-range-slidervalue">12</p>
+                        </div>
+                    </div>
+
+                    <div class="box gen_pas_contain">
+                        <div class="top">
+                            <div class="label" for="">Password Contains </div>
+                            <button class="pas_contain_add_btn">Add</button>
+                        </div>
+
+                        <div class="body">
+                            <div class="item"> special chr </div>
+                            <div class="item">number </div>
+                            <div class="item"> uppercase </div>
+                            <div class="item"> lowercase </div>
+                            <div class="item"> symbol </div>
+                        </div>
+                    </div>
+
+                    <div class="box gen_pas_display">
+                        <!-- <label class="label" for="">Generated Password will be displayes here</label> -->
+
+                        <div class="display_box">
+                            <input class="password_display" type="text"
+                                placeholder="Generated Password will be displayed here..." readonly />
+                            <button class="copy_btn" onclick="copyPassword()"> <img src="img/copy.png" alt="">
+                                copy</button>
+                            <button class="new_btn" onclick="createPassword()">New</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="left">
                 <div class="title">
@@ -24,7 +73,13 @@
                     </div>
                     <div class="desc">
                         <span>Business Account </span>
-                        <div class="name">Lorem ipsum</div>
+                        <div class="name">Amimul Ihsam</div>
+                    </div>
+                    <div class="setting">
+                        <button class="setting_btn">
+                            <img class="setting_icon" src="img/settings.png" alt="">
+                            Setting
+                        </button>
                     </div>
                 </div>
 
@@ -57,7 +112,9 @@
                 </div>
 
                 <!-- generate password  -->
-               <button class="generate_btn" >generate </button>
+                <button class="generate_btn">
+                    <img src="img/generator.png" class="generate_icon" alt="" srcset=""> generate
+                </button>
 
                 <!-- check result  -->
                 <div class="result">
@@ -89,6 +146,21 @@
                     <li class="list_item max_char">Maximum of 30 charactesr!</li>
 
                 </ol>
+            </div>
+
+            <!-- settings wrapper -->
+            <div id="settings_wrapper">
+                <div class="set_header">
+                    <div class="title">Settings</div>
+                    <button class="set_close_btn"
+                        onclick="this.parentElement.parentElement.classList.remove('setting_active')">&times</button>
+                </div>
+                <hr style="background-color: rgba(255,255,255,0.7)">
+
+                <div class="set_body">
+
+                    <div class="set_display">Generated Pass Here</div>
+                </div>
             </div>
 
         </div>

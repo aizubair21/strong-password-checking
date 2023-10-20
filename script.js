@@ -4,7 +4,10 @@ let form_text = document.getElementsByClassName('form_text')[0];
 let listItem = document.querySelectorAll(".list_item");
 const parcentIndicateElement = document.getElementsByClassName("indicate-percent")[0];
 const generateBtn = document.getElementsByClassName('generate_btn')[0];
+const settingBtn = document.getElementsByClassName("setting_btn")[0];
+// const passwordBtn = document.getElementByI('setting_');
 let totalCountStage = 8;
+let passwordLength = 12;
 
 
 img[0].style.display = "none"; //eye open hide by default
@@ -263,15 +266,26 @@ animation()
 
 //function for show generate password box
 generateBtn.addEventListener('click', () => {
-    const passLength = document.getElementById("passLength").value;
-    const hasNumber = document.getElementById("hasNumber").checked;
-    const hasSymbols = document.getElementById("hasSymbols").checked;
-    const hasVowels = document.getElementById("hasVowels").checked;
-    const hasConsonants = document.getElementById("hasConsonants").checked;
-    const isCapitalLetter = document.getElementById("isCapitalLetter").checked;
-    const isSmallLetter = document.getElementById("isSmallLetter").checked;
-    const isDigit = document.getElementById("isDigit").checked;
-    const isSpecialCharacter = document.getElementById("isSpecialCharacter").checked;
+
+    const passwordWrapperElement = document.getElementById('generate_wrapper');
+
+    if (passwordWrapperElement.classList.contains('password_active')) {
+        passwordWrapperElement.classList.remove('password_active')
+    } else {
+        passwordWrapperElement.classList.add('password_active')
+    }
+    createPassword();
+
+
+    // const passLength = document.getElementById("passLength").value;
+    // const hasNumber = document.getElementById("hasNumber").checked;
+    // const hasSymbols = document.getElementById("hasSymbols").checked;
+    // const hasVowels = document.getElementById("hasVowels").checked;
+    // const hasConsonants = document.getElementById("hasConsonants").checked;
+    // const isCapitalLetter = document.getElementById("isCapitalLetter").checked;
+    // const isSmallLetter = document.getElementById("isSmallLetter").checked;
+    // const isDigit = document.getElementById("isDigit").checked;
+    // const isSpecialCharacter = document.getElementById("isSpecialCharacter").checked;
     // console.log({
     //     passLength: passLength,
     // hasNumber: hasNumber,
@@ -283,12 +297,14 @@ generateBtn.addEventListener('click', () => {
     // isDigit: isDigit,
     // isSpecialCharacter: isSpecialCharacter
     // })
-    createPassword(passLength, hasNumber, hasSymbols, hasVowels, hasConsonants, isCapitalLetter,
-        isSmallLetter, isDigit, isSpecialCharacter);
+    // createPassword(passLength, hasNumber, hasSymbols, hasVowels, hasConsonants, isCapitalLetter,
+    //     isSmallLetter, isDigit, isSpecialCharacter);
 })
+
+
 //generate password
-function createPassword(lenght, numb, symbl, vwls, cnsnt, capLttr, smllL, dgt, spclChr) {
-    var length = 15;
+function createPassword(lenght, numb, symbl, cnsnt, capLttr, smllL, dgt, spclChr) {
+    passwordLength = passSlider.value;
 
     var symbols = '!@#$%^&*';
     var numbers = '0123456789';
@@ -300,7 +316,7 @@ function createPassword(lenght, numb, symbl, vwls, cnsnt, capLttr, smllL, dgt, s
     var consonant = 'bcdfghjklmnpqrstvwxyz';
 
     // let creator = ['symbols', 'uppercase', 'uppercase' , 'char', 'numbers', 'lowercase', 'numbers', 'char', 'numbers'];
-    var all = [symbols, uppercase, uppercase, char, numbers, lowercase, numbers, char, numbers];
+    var all = [symbols, uppercase, uppercase, numbers, char, lowercase, numbers, numbers];
 
     if (spclChr && !numb && !symbl && !capLttr && !smllL && !dgt && !cnsnt) {
         alert('Please select at least one checkbox');
@@ -312,7 +328,7 @@ function createPassword(lenght, numb, symbl, vwls, cnsnt, capLttr, smllL, dgt, s
             if (i >= all.length - 1) {
                 i = 0;
             }
-            if (password.length > length) {
+            if (password.length > passwordLength) {
                 break;
             }
             // pasInput = creator[i].length;
@@ -325,9 +341,45 @@ function createPassword(lenght, numb, symbl, vwls, cnsnt, capLttr, smllL, dgt, s
             // password += all[randomNumber];
         }
         // resultBox.innerHTML = '<h3>Generated Password</h3><p>' + password + '</p>';
-        console.log(password);
+        document.getElementsByClassName('password_display')[0].value = password;
+
         // copyToClipboard();
 
     }
 }
-createPassword();
+
+
+//open setting wrapper by clicking setting button
+settingBtn.addEventListener("click", () => {
+    const settingsWrappwer = document.getElementById("settings_wrapper");
+    // settingsWrappwer.classList.toggle("setting_active");
+
+    if (settingsWrappwer.classList.contains('setting_active')) {
+        settingsWrappwer.classList.remove("setting_active")
+    } else {
+        settingsWrappwer.classList.add("setting_active")
+    }
+})
+
+
+// funciton for copy password to clipboard 
+function copyPassword() {
+    //copy the 'password_display' class list input value
+    let copyTextarea = document.querySelector('.password_display');
+    if (copyTextarea.value == "") {
+        copyTextarea.style.disabled = "true";
+    } else {
+        copyTextarea.select();
+        document.execCommand("Copy");
+        alert("Copied to clipboard: " + copyTextarea.value);
+    }
+    // console.log(password);
+}
+
+//password range slider
+const passSlider = document.getElementsByClassName('PB-range-slider')[0];
+passSlider.addEventListener('input', (e) => {
+    passwordLength = e.target.value;
+    document.getElementsByClassName('PB-range-slidervalue')[0].innerHTML = passwordLength;
+    createPassword();
+})
