@@ -1,0 +1,23 @@
+@media (max-width:570px) {
+    body {
+        padding: 0 !important;
+        margin: 0;
+    }
+
+    .viewBox-body {
+        display: block;
+        flex-direction: column;
+        /* width: 100%; */
+        width: 100% !important;
+    }
+
+    .viewBox-body>* {
+        flex: 1;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+        flex: 1;
+    }
+}

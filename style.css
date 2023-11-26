@@ -7,21 +7,29 @@
     color: #1D3153;
 }
 
+body {
+    overflow: hidden;
+    margin: 0px;
+    padding: 25px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
 .viewBox {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
 
 }
 
 .viewBox .viewBox-body {
-    /* width: 300px; */
+    width: 800px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: start;
-    height: 380px;
-    padding: 25px;
+    height: auto;
+    /* padding: 25px; */
     border-radius: 15px;
     position: relative;
     z-index: 1;
@@ -32,21 +40,27 @@
     box-shadow: 20px 20px 60px #bdbdbd,
         -20px -20px 60px #ffffff;
 
-    .left {
-        width: 300px;
+    .left,
+    .right {
+        /* width: 300px; */
+        max-width: 450px;
+        width: 100%;
+        padding: 25px;
+
     }
 
-    .devider {
+    /* .devider {
         width: 2px;
         height: 100%;
         background-color: white;
         margin: 0px 20px;
         border-radius: 8px;
         box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .3);
-    }
+    } */
 
     .right {
-        width: 300px;
+        /* width: 300px; */
+        /* width: 100%; */
 
         .right-list {
             padding: 10px 15px;
@@ -71,63 +85,72 @@
         }
     }
 
+}
 
-    #generate_wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        /* background-color: rgba(255, 255, 255, 0.953); */
-        padding: 15px 25px;
-        z-index: 5;
-        opacity: 0;
-        transform: scale(0);
-        transition: all linear .3s;
+#generate_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.953);
+    padding: 15px 25px;
+    z-index: 5;
+    /* opacity: 0; */
+    /* transform: scale(0); */
+    display: none;
+    transition: all linear .3s;
 
-        .gen_pas_header {
+    .gen_pas_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .title {
+            font-size: 20px;
+        }
+
+        .gen_pas_close_btn {
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            border: none;
+            background-color: red;
+            color: white;
+            ;
+        }
+    }
+
+    .gen_pas_body {
+
+        .box,
+        .gen_pas_length {
+            background-color: #fff;
+            /* padding: 3px; */
+            margin: 12px 0px;
+            /* border-radius: 8px; */
+
+            .label {
+                font-size: 17px;
+                padding: 15px;
+                display: block
+            }
+        }
+
+        .gen_pas_contain {
             display: flex;
             justify-content: space-between;
             align-items: center;
 
+            /* border: 1px solid #1D3153; */
+            .gen_pass_order {}
 
-            .title {
-                font-size: 20px;
-            }
-
-            .gen_pas_close_btn {
-                cursor: pointer;
-                width: 25px;
-                height: 25px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 18px;
-                border: none;
-                background-color: red;
-                color: white;
-                ;
-            }
-        }
-
-        .gen_pas_body {
-
-            .box,
-            .gen_pas_length {
-                background-color: #fff;
-                /* padding: 3px; */
-                margin: 12px 0px;
-                /* border-radius: 8px; */
-
-                .label {
-                    font-size: 17px;
-                    padding: 15px;
-                    display: block
-                }
-            }
-
-            .gen_pas_contain {
-                border: 1px solid #1D3153;
+            .gen_pass_element {
 
                 .top {
                     padding-right: 15px;
@@ -155,11 +178,7 @@
                 }
 
                 .body {
-                    padding: 5px;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    align-items: center;
+                    /* padding: 5px; */
 
                     .item {
                         /* width: 120px; */
@@ -182,115 +201,115 @@
 
                     }
                 }
-
             }
 
+        }
 
-            .gen_pas_display {
-                padding: 3px;
-                border: 1px solid #1D3153;
 
-                .display_box {
+        .gen_pas_display {
+            padding: 3px;
+            border: 1px solid #1D3153;
+
+            .display_box {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+
+                .password_display {
+                    padding: 8px;
                     width: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
+                    font-size: 19px;
+                    border: none;
+                    background-color: inherit;
 
-
-                    .password_display {
-                        padding: 8px;
-                        width: 100%;
-                        font-size: 19px;
+                    &:focus {
                         border: none;
-                        background-color: inherit;
-
-                        &:focus {
-                            border: none;
-                            outline: none;
-                        }
+                        outline: none;
                     }
+                }
 
-                    .copy_btn {
-                        width: 100px;
-                        height: 50px;
-                        border: none;
-                        background-color: #1D3153;
-                        color: white;
-                        text-align: center;
-                        cursor: pointer;
-                        margin-left: auto;
-                        font-size: 18px;
+                .copy_btn {
+                    width: 100px;
+                    height: 50px;
+                    border: none;
+                    background-color: #1D3153;
+                    color: white;
+                    text-align: center;
+                    cursor: pointer;
+                    margin-left: auto;
+                    font-size: 18px;
+                    transition: all linear .3s;
+
+                    &:hover {
+                        font-size: 20px;
                         transition: all linear .3s;
-
-                        &:hover {
-                            font-size: 20px;
-                            transition: all linear .3s;
-                            ;
-                        }
+                        ;
                     }
+                }
 
-                    .new_btn {
-                        width: 100px;
-                        height: 50px;
-                        border: none;
-                        margin-left: 8px;
-                        background-color: #4967A3;
-                        color: white;
-                        text-align: center;
-                        cursor: pointer;
-                        margin-left: auto;
-                        font-size: 18px;
-                        transition: all linear .3s;
-                        opacity: .8;
+                .new_btn {
+                    width: 100px;
+                    height: 50px;
+                    border: none;
+                    margin-left: 8px;
+                    background-color: #4967A3;
+                    color: white;
+                    text-align: center;
+                    cursor: pointer;
+                    margin-left: auto;
+                    font-size: 18px;
+                    transition: all linear .3s;
+                    opacity: .8;
 
-                        &:hover {
-                            /* background-color: ; */
-                            opacity: 1;
-                        }
+                    &:hover {
+                        /* background-color: ; */
+                        opacity: 1;
                     }
                 }
             }
         }
     }
+}
 
-    #settings_wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        /* background-color: rgba(255, 255, 255, 0.953); */
-        padding: 15px 25px;
-        z-index: -1;
-        opacity: 0;
-        transform: scale(0);
-        transition: all linear .3s;
-        /* border: 1px solid #1D3153; */
-        border-radius: 8px;
-        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, .3);
+#settings_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 255, 255, 0.953); */
+    padding: 15px 25px;
+    z-index: -1;
+    opacity: 0;
+    transform: scale(0);
+    transition: all linear .3s;
+    /* border: 1px solid #1D3153; */
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, .3);
 
-        .set_header {
+    .set_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .title {
+            font-size: 20px;
+        }
+
+        .set_close_btn {
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-
-
-            .title {
-                font-size: 20px;
-            }
-
-            .set_close_btn {
-                cursor: pointer;
-                width: 25px;
-                height: 25px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 18px;
-                border: none;
-                background-color: red;
-                color: white;
-            }
+            font-size: 18px;
+            border: none;
+            background-color: red;
+            color: white;
         }
     }
 }
@@ -300,16 +319,17 @@
 }
 
 .password_active {
-    opacity: 1 !important;
-    transform: scale(1) !important;
+    /* opacity: 1 !important; */
+    /* transform: scale(1) !important; */
     transition: all linear .3s !important;
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
+    display: block !important;
 }
 
 .setting_active {
     opacity: 1 !important;
     transform: scale(1) !important;
-    transition: all linear .3s !important;
+    /* transition: all linear .3s !important; */
     backdrop-filter: blur(50px);
     z-index: 5 !important;
 }

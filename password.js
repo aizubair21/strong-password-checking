@@ -101,6 +101,9 @@ function checkAndShow() {
 
         //check special character include or not
         checkSpecialChar();
+
+        //check if white space include 
+        checkWhiteSpace();
     }
 
     if (pasInput.value == "") {
@@ -259,6 +262,20 @@ async function checkSpecialChar() {
     }
     return true;
 }
+
+//check if include white space 
+async function checkWhiteSpace() {
+    var regex = /\s/g;
+    if ((pasInput.value).match(regex)) {
+        checkAdnShowList(0, "space");
+        checkAndShowPercent();
+    } else {
+        checkAdnShowList(1, "space");
+    }
+    return true;
+}
+
+
 
 //check password start with special charcater
 animation()
