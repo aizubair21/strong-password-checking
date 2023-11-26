@@ -2,22 +2,33 @@
     body {
         padding: 0 !important;
         margin: 0;
+
+        .viewBox {
+            align-items: start !important;
+
+            .viewBox-body {
+                flex-direction: column;
+                align-items: start;
+                /* width: 100%; */
+                width: 100% !important;
+                background: linear-gradient(172deg, #ffffff, #a3a3a3);
+                box-shadow: none;
+                border-radius: 0px;
+
+            }
+
+            .viewBox-body>* {
+                flex: 1;
+            }
+
+            .left,
+            .right {
+                width: 100%;
+                flex: 1;
+            }
+        }
     }
 
-    .viewBox-body {
-        display: block;
-        flex-direction: column;
-        /* width: 100%; */
-        width: 100% !important;
-    }
 
-    .viewBox-body>* {
-        flex: 1;
-    }
 
-    .left,
-    .right {
-        width: 100%;
-        flex: 1;
-    }
 }

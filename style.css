@@ -8,11 +8,58 @@
 }
 
 body {
+    /* overflow-y: scroll; */
     overflow: hidden;
     margin: 0px;
-    padding: 25px;
     box-sizing: border-box;
     height: 100vh;
+    background-color: darkgray;
+}
+
+.pg_header {
+    background-color: #1D3153;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #fff;
+        margin: 0 auto;
+
+        .left,
+        .right {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .left .h_nav {
+            font-size: 16px;
+            color: #fff;
+            padding: 15px 25px;
+            text-transform: capitalize;
+        }
+
+        .h_nav_active {
+            background-color: lightgray;
+        }
+
+        .right {
+
+            &>* {
+                background-color: #fff;
+                padding: 10px;
+                font-size: 25px;
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
 }
 
 .viewBox {
@@ -36,9 +83,9 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     /* border-radius: 50px; */
-    background: linear-gradient(124deg, #4967a34f, white);
-    box-shadow: 20px 20px 60px #bdbdbd,
-        -20px -20px 60px #ffffff;
+    background: linear-gradient(124deg, );
+    box-shadow: 8px 8px 25px 0px #bdbdbd, -8px -8px 25px 0px #00000020;
+    background: linear-gradient(135deg, #ffffff, #a3a3a3);
 
     .left,
     .right {
@@ -89,183 +136,198 @@ body {
 
 #generate_wrapper {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* max-width: 100%; */
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.953);
+    background-color: rgba(210, 210, 210, 0.953);
+    /* background: linear-gradient(124deg, #4967a34f, white); */
+    /* box-shadow: 20px 20px 60px #bdbdbd, -20px -20px 60px #ffffff; */
     padding: 15px 25px;
     z-index: 5;
+    display: none;
     /* opacity: 0; */
     /* transform: scale(0); */
-    display: none;
+    /* display: none; */
     transition: all linear .3s;
 
-    .gen_pas_header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .gen_wrapper {
+        max-width: 450px;
+        background-color: #fff;
+        box-shadow: 0px 0px 12px 0px #ffffff20;
+        padding: 25px;
+        margin: auto;
 
-
-        .title {
-            font-size: 20px;
-        }
-
-        .gen_pas_close_btn {
-            cursor: pointer;
-            width: 25px;
-            height: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            border: none;
-            background-color: red;
-            color: white;
-            ;
-        }
-    }
-
-    .gen_pas_body {
-
-        .box,
-        .gen_pas_length {
-            background-color: #fff;
-            /* padding: 3px; */
-            margin: 12px 0px;
-            /* border-radius: 8px; */
-
-            .label {
-                font-size: 17px;
-                padding: 15px;
-                display: block
-            }
-        }
-
-        .gen_pas_contain {
+        .gen_pas_header {
             display: flex;
             justify-content: space-between;
             align-items: center;
 
-            /* border: 1px solid #1D3153; */
-            .gen_pass_order {}
 
-            .gen_pass_element {
+            .title {
+                font-size: 20px;
+            }
 
-                .top {
-                    padding-right: 15px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
+            .gen_pas_close_btn {
+                cursor: pointer;
+                width: 25px;
+                height: 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+                border: none;
+                background-color: red;
+                color: white;
+                ;
+            }
+        }
 
-                    .pas_contain_add_btn {
-                        text-align: center;
-                        border: none;
-                        padding: 3px 8px;
-                        background-color: #1D3153;
-                        color: #fff;
-                        text-transform: uppercase;
-                        font-weight: 600;
-                        cursor: pointer;
-                        transition: all linear 0.3s;
+        .gen_pas_body {
 
-                        &:hover {
+            .box,
+            .gen_pas_length {
+                background-color: #fff;
+                /* padding: 3px; */
+                margin: 12px 0px;
+                /* border-radius: 8px; */
 
-                            box-shadow: 0px 5px 5px rgba(0, 0, 0, .3);
-                            transition: all linear 0.3s;
-                        }
-                    }
-                }
-
-                .body {
-                    /* padding: 5px; */
-
-                    .item {
-                        /* width: 120px; */
-                        /* min-width: auto; */
-                        text-align: center;
-                        border: 1px solid #bdbdbd;
-                        /* height: 10px; */
-                        padding: 5px 12px;
-                        margin: 2px;
-                        cursor: pointer;
-                        background-color: green;
-                        color: white;
-                        text-transform: uppercase;
-
-                        &:hover {
-                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-                            transition: all 0.3s ease;
-                        }
-
-
-                    }
+                .label {
+                    font-size: 20px;
+                    padding: 15px;
+                    padding-left: 0px;
+                    display: block
                 }
             }
 
-        }
-
-
-        .gen_pas_display {
-            padding: 3px;
-            border: 1px solid #1D3153;
-
-            .display_box {
-                width: 100%;
+            .gen_pas_contain {
                 display: flex;
-                align-items: center;
                 justify-content: space-between;
+                align-items: center;
 
+                /* border: 1px solid #1D3153; */
+                /* .gen_pass_order {} */
 
-                .password_display {
-                    padding: 8px;
+                .gen_pass_element {
                     width: 100%;
-                    font-size: 19px;
-                    border: none;
-                    background-color: inherit;
 
-                    &:focus {
+                    .top {
+                        padding-right: 15px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .pas_contain_add_btn {
+                            text-align: center;
+                            border: none;
+                            padding: 3px 8px;
+                            background-color: #1D3153;
+                            color: #fff;
+                            text-transform: uppercase;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all linear 0.3s;
+
+                            &:hover {
+
+                                box-shadow: 0px 5px 5px rgba(0, 0, 0, .3);
+                                transition: all linear 0.3s;
+                            }
+                        }
+                    }
+
+                    .body {
+                        margin:15px 0px 10px 8px;
+
+                        .item {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding: 8px 3px;
+                        }
+
+                        .item input {
+                            margin: 0px 10px;
+                            padding: 0px;
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        .item label {
+                            display: block;
+                            height: 30px;
+                            font-size: 17px;
+                            /* width: 20px; */
+                        }
+                    }
+                }
+
+            }
+
+
+            .gen_pas_display {
+                padding: 3px;
+                border: 1px solid #1D3153;
+
+                .display_box {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+
+                    .password_display {
+                        padding: 8px;
+                        width: 100%;
+                        font-size: 19px;
                         border: none;
-                        outline: none;
+                        background-color: inherit;
+
+                        &:focus {
+                            border: none;
+                            outline: none;
+                        }
                     }
-                }
 
-                .copy_btn {
-                    width: 100px;
-                    height: 50px;
-                    border: none;
-                    background-color: #1D3153;
-                    color: white;
-                    text-align: center;
-                    cursor: pointer;
-                    margin-left: auto;
-                    font-size: 18px;
-                    transition: all linear .3s;
-
-                    &:hover {
-                        font-size: 20px;
+                    .copy_btn {
+                        width: 100px;
+                        height: 50px;
+                        border: none;
+                        background-color: #1D3153;
+                        color: white;
+                        text-align: center;
+                        cursor: pointer;
+                        margin-left: auto;
+                        font-size: 18px;
                         transition: all linear .3s;
-                        ;
+
+                        &:hover {
+                            font-size: 20px;
+                            transition: all linear .3s;
+                            ;
+                        }
                     }
-                }
 
-                .new_btn {
-                    width: 100px;
-                    height: 50px;
-                    border: none;
-                    margin-left: 8px;
-                    background-color: #4967A3;
-                    color: white;
-                    text-align: center;
-                    cursor: pointer;
-                    margin-left: auto;
-                    font-size: 18px;
-                    transition: all linear .3s;
-                    opacity: .8;
+                    .new_btn {
+                        width: 100px;
+                        height: 50px;
+                        border: none;
+                        margin-left: 8px;
+                        background-color: #4967A3;
+                        color: white;
+                        text-align: center;
+                        cursor: pointer;
+                        margin-left: auto;
+                        font-size: 18px;
+                        transition: all linear .3s;
+                        opacity: .8;
 
-                    &:hover {
-                        /* background-color: ; */
-                        opacity: 1;
+                        &:hover {
+                            /* background-color: ; */
+                            opacity: 1;
+                        }
                     }
                 }
             }
@@ -341,7 +403,7 @@ body {
     color: #1D3153;
     /* margin-bottom: px; */
     padding-bottom: 10px;
-    border-bottom: 1px solid white;
+    /* border-bottom: 1px solid white; */
 }
 
 .profile {

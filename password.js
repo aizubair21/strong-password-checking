@@ -6,6 +6,11 @@ const parcentIndicateElement = document.getElementsByClassName("indicate-percent
 const generateBtn = document.getElementsByClassName('generate_btn')[0];
 const settingBtn = document.getElementsByClassName("setting_btn")[0];
 // const passwordBtn = document.getElementByI('setting_');
+var symbols = '!@#$%^&*';
+var numbers = '0123456789';
+var lowercase = 'abcdefghijklmnopqrstuvwxyz';
+var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var char = "()_+{}:<>[]";
 let totalCountStage = 8;
 let passwordLength = 12;
 
@@ -320,22 +325,42 @@ generateBtn.addEventListener('click', () => {
 
 
 //generate password
-function createPassword(lenght, numb, symbl, cnsnt, capLttr, smllL, dgt, spclChr) {
+function createPassword() {
     passwordLength = passSlider.value;
+    // let password = '';
 
-    var symbols = '!@#$%^&*';
-    var numbers = '0123456789';
-    var lowercase = 'abcdefghijklmnopqrstuvwxyz';
-    var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var char = "()_+{}:<>[]|\\";
 
-    var vwls = 'aeiou';
-    var consonant = 'bcdfghjklmnpqrstvwxyz';
+    // var vwls = 'aeiou';
+    // var consonant = 'bcdfghjklmnpqrstvwxyz';
+    // // console.log(passwordLength);
+    // let creator = ['symbols', 'uppercase', 'char', 'numbers', 'lowercase'];
 
-    // let creator = ['symbols', 'uppercase', 'uppercase' , 'char', 'numbers', 'lowercase', 'numbers', 'char', 'numbers'];
-    var all = [symbols, uppercase, uppercase, numbers, char, lowercase, numbers, numbers];
+    //randomized 'creator' value, where must start with 'symbols', minimum 3 'uppercase','lowercase', 'numbers', and minimum 2 'char'. but this requirement associated with 'passwordLength'
 
-    if (spclChr && !numb && !symbl && !capLttr && !smllL && !dgt && !cnsnt) {
+
+
+    // for (let i = 0; i < 20; i++) {
+    //     var randomCreator = Math.floor(Math.random() * creator.length);
+    //     if (creator[randomCreator] == 'symbols') {
+    //         password += symbols[Math.floor(Math.random() * symbols.length)];
+    //     } else if (creator[randomCreator] == 'uppercase') {
+    //         password += uppercase[Math.floor(Math.random() * uppercase.length)];
+    //     } else if (creator[randomCreator] == 'char') {
+    //         password += char[Math.floor(Math.random() * char.length)];
+    //     } else if (creator[randomCreator] == 'numbers') {
+    //         password += numbers[Math.floor(Math.random() * numbers.length)];
+    //     } else if (creator[randomCreator] == 'lowercase') {
+    //         password += lowercase[Math.floor(Math.random() * lowercase.length)];
+    //     }
+    // };
+    // console.log(password);
+
+
+
+    // var all = [symbols, uppercase, uppercase, numbers, char, lowercase, numbers, numbers];
+    // var all = [uppercase];
+
+    /*if (spclChr && !numb && !symbl && !capLttr && !smllL && !dgt && !cnsnt) {
         alert('Please select at least one checkbox');
         return false;
     } else {
@@ -358,13 +383,26 @@ function createPassword(lenght, numb, symbl, cnsnt, capLttr, smllL, dgt, spclChr
             // password += all[randomNumber];
         }
         // resultBox.innerHTML = '<h3>Generated Password</h3><p>' + password + '</p>';
-        document.getElementsByClassName('password_display')[0].value = password;
-
+        
         // copyToClipboard();
-
-    }
+        
+    }*/
+    document.getElementsByClassName('password_display')[0].value = generatePassword(passwordLength, {
+        upper: true,
+        lower: true,
+        number: true,
+        special: false,
+        symbol: false,
+    });
 }
 
+/*
+ * function to determided which character include in password
+ * 
+ */
+function determinedIncludedCharacter() {
+
+}
 
 //open setting wrapper by clicking setting button
 settingBtn.addEventListener("click", () => {
@@ -400,3 +438,169 @@ passSlider.addEventListener('input', (e) => {
     document.getElementsByClassName('PB-range-slidervalue')[0].innerHTML = passwordLength;
     createPassword();
 })
+
+
+//BlackBox ai code
+// function generatePassword(passwordLength) {
+//     const minUpper = 3;
+//     const minLower = 3;
+//     const minNumber = 3;
+//     const minSpecial = 3;
+
+//     const upper = getRandomChars('ABCDEFGHIJKLMNOPQRSTUVWXYZ', minUpper);
+//     const lower = getRandomChars('abcdefghijklmnopqrstuvwxyz', minLower);
+//     const numbers = getRandomChars('0123456789', minNumber);
+//     const special = getRandomChars('!@#$%^&*()', minSpecial);
+
+//     const allChars = upper.concat(lower, numbers, special);
+//     // return allChars;
+//     shuffleArray(allChars);
+//     let password = '';
+//     for (let i = 0; i < passwordLength; i++) {
+//         password += allChars[i];
+//     }
+
+//     return password;
+// }
+// console.log(generatePassword(12));
+
+// function getRandomChars(charSet, minCount) {
+//     const result = [];
+//     for (let i = 0; i < minCount; i++) {
+//         const index = Math.floor(Math.random() * charSet.length);
+//         result.push(charSet[index]);
+//     }
+//     return result;
+// }
+
+// function shuffleArray(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
+// }
+
+/**
+ * bellow function make fixe inmbination of element
+ */
+// function generatePassword(passwordLength) {
+//     const minUpper = Math.ceil(passwordLength * 0.33);
+//     const minLower = Math.ceil(passwordLength * 0.33);
+//     const minNumber = Math.ceil(passwordLength * 0.33);
+//     const minSpecial = Math.floor(passwordLength * 0.33);
+
+//     const upper = getRandomChars('ABCDEFGHIJKLMNOPQRSTUVWXYZ', minUpper);
+//     const lower = getRandomChars('abcdefghijklmnopqrstuvwxyz', minLower);
+//     const numbers = getRandomChars('0123456789', minNumber);
+//     const special = getRandomChars('!@#$%^&*()', minSpecial);
+//     const allChars = '';
+//     included.forEach(ic => {
+//         switch (ic) {
+//             case 'upper':
+//                 allChars.concat(upper);
+//                 break;
+//             case 'lower':
+//                 allChars.concat(lower);
+//                 break;
+//             case 'numbers':
+//                 allChars.concat(numbers);
+//                 break;
+//             case 'special':
+//                 allChars.concat(special)
+//                 break;
+//         }
+//     });
+//     shuffleArray(allChars);
+
+//     let password = '';
+//     for (let i = 0; i < passwordLength; i++) {
+//         password += allChars[i];
+//     }
+
+//     return password;
+// }
+// console.log(generatePassword(15));
+
+// function getRandomChars(charSet, minCount) {
+//     const result = [];
+//     for (let i = 0; i < minCount; i++) {
+//         const index = Math.floor(Math.random() * charSet.length);
+//         result.push(charSet[index]);
+//     }
+//     return result;
+// }
+
+// function shuffleArray(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
+// }
+
+
+function generatePassword(passwordLength, options) {
+    // options = options || {};
+    const upper = options.upper;
+    const lower = options.lower;
+    const number = options.number;
+    const special = options.special;
+    const symbol = options.symbol;
+
+    let minUpper = 0;
+    let minLower = 0;
+    let minNumber = 0;
+    let minSpecial = 0;
+    let minSymbols = 0;
+
+    if (upper) minUpper = Math.ceil(passwordLength * 0.25);
+    if (lower) minLower = Math.ceil(passwordLength * 0.25);
+    if (number) minNumber = Math.ceil(passwordLength * 0.25);
+    if (special) minSpecial = Math.floor(passwordLength * 0.25);
+    if (symbol) minSymbols = Math.floor(passwordLength * 0.25);
+
+    // console.log(minUpper, minLower, minNumber, minSpecial);
+    // console.log(options);
+
+    const result = [];
+    if (upper) result.push(getRandomChars(uppercase, minUpper, upper));
+    if (lower) result.push(getRandomChars(lowercase, minLower, lower));
+    if (number) result.push(getRandomChars(numbers, minNumber, number));
+    if (special) result.push(getRandomChars(char, minSpecial, special));
+    if (symbol) result.push(getRandomChars(symbols, minSymbols, symbol));
+
+    const allChars = result.flat();
+    shuffleArray(allChars);
+
+    let password = '';
+    for (let i = 0; i < passwordLength; i++) {
+        password += allChars[i];
+    }
+
+    return password;
+}
+
+function getRandomChars(charSet, minCount, include) {
+    const result = [];
+    for (let i = 0; i < minCount; i++) {
+        const index = Math.floor(Math.random() * charSet.length);
+        result.push(charSet[index]);
+    }
+
+    if (!include) return result;
+
+    const remaining = passwordLength - minCount;
+    for (let i = 0; i < remaining; i++) {
+        const index = Math.floor(Math.random() * charSet.length);
+        result.push(charSet[index]);
+    }
+
+    return result;
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+// console.log();

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strong Password Checker and Maker with vanila JavaScript </title>
+    <!-- fontawesome cdn  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="outer.css">
     <link rel="stylesheet" href="common.css">
@@ -12,15 +14,47 @@
 </head>
 
 <body>
-    <div class="viewBox">
-        <!-- password wrapper  -->
-        <div id="generate_wrapper" class="password_activ">
+
+    <!-- demo login  -->
+    <div class="demo_login">
+
+    </div>
+
+    <!-- header  -->
+    <div class="pg_header">
+        <div class="container">
+            <div class="left">
+                <div class="h_nav">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="h_nav">
+                    Maker
+                </div>
+                <div class="h_nav">
+                    Generator
+                </div>
+                <div class="h_nav">
+                    Valut
+                </div>
+
+            </div>
+            <div class="right">
+                <img src="img/settings.png" alt="">
+                <i class="fa fa-user"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- password wrapper  -->
+    <div id="generate_wrapper" class="password_active">
+
+        <div class="gen_wrapper">
             <div class="gen_pas_header">
                 <div class="title">Generate Strong Password</div>
                 <button class="gen_pas_close_btn"
                     onclick="this.parentElement.parentElement.classList.remove('password_active')">&times</button>
             </div>
-            <hr>
+            <div class="hr hr_black"></div>
 
             <div class="gen_pas_body">
                 <div class="box gen_pas_label">
@@ -39,13 +73,30 @@
                             <div class="label" for="">Password Contains </div>
                             <!-- <button class="pas_contain_add_btn">Add</button> -->
                         </div>
+                        <div class="hr hr_black"></div>
 
                         <div class="body">
-                            <div class="item"> special chr </div>
-                            <div class="item">number </div>
-                            <div class="item"> uppercase </div>
-                            <div class="item"> lowercase </div>
-                            <div class="item"> symbol </div>
+                            <div class="item">
+                                <input type="checkbox" checked name="" value="[]" id="LowerLater">
+                                <label for="LowerLater">Includes Lowercase Letter</label>
+                            </div>
+                            <div class="item">
+                                <input type="checkbox" checked name="" value="[]" id="upperLater">
+                                <label for="upperLater">Includes Uppercase Letter</label>
+                            </div>
+                            <div class="item">
+                                <input type="checkbox" checked name="" value="[]" id="InclueNumber">
+                                <label for="InclueNumber">Includes Number</label>
+                            </div>
+                            <div class="item">
+                                <input type="checkbox" checked name="" value="[]" id="specialChar">
+                                <label for="specialChar">Includes Special Character</label>
+                            </div>
+                            <div class="item">
+                                <input type="checkbox" checked name="" value="[]" id="Symbol">
+                                <label for="Symbol">Includes Symbols</label>
+                            </div>
+
                         </div>
 
                     </div>
@@ -59,8 +110,7 @@
                     <!-- <label class="label" for="">Generated Password will be displayes here</label> -->
 
                     <div class="display_box">
-                        <input class="password_display" type="text"
-                            placeholder="Generated Password will be displayed here..." readonly />
+                        <input class="password_display" type="text" placeholder="Password Display..." readonly />
                         <button class="copy_btn" onclick="copyPassword()"> <img src="img/copy.png" alt="">
                             copy</button>
                         <button class="new_btn" onclick="createPassword()">New</button>
@@ -68,6 +118,12 @@
                 </div>
             </div>
         </div>
+
+    </div>
+
+    <div class="viewBox">
+
+        <!-- view box body -->
         <div class="viewBox-body">
 
             <div class="left">
@@ -75,6 +131,7 @@
                     Enter Your Password
                     <div style="font-size: 10px;">Type, generate and check Password</div>
                 </div>
+                <div class="hr hr_black"></div>
 
                 <!-- profile  -->
                 <div class="profile">
@@ -145,6 +202,7 @@
                     <p style="font-size:10px; line-height: 15px;">To get strong password please follow the bellow
                         instruction.</p>
                 </div>
+                <div class="hr hr_black"></div>
 
                 <ol class="right-list">
                     <li class="list_item spe_cr">Start with special character.</li>
