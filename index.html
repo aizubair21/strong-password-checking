@@ -46,13 +46,13 @@
     </div>
 
     <!-- password wrapper  -->
-    <div id="generate_wrapper" class="password_active">
+    <div id="generate_wrapper" class="password_activ">
 
         <div class="gen_wrapper">
             <div class="gen_pas_header">
                 <div class="title">Generate Strong Password</div>
                 <button class="gen_pas_close_btn"
-                    onclick="this.parentElement.parentElement.classList.remove('password_active')">&times</button>
+                    onclick="this.parentElement.parentElement.parentElement.classList.remove('password_active')">&times</button>
             </div>
             <div class="hr hr_black"></div>
 
@@ -77,24 +77,25 @@
 
                         <div class="body">
                             <div class="item">
-                                <input type="checkbox" checked name="" value="[]" id="LowerLater">
-                                <label for="LowerLater">Includes Lowercase Letter</label>
+                                <input type="checkbox" checked name="" value='upper' class="incPasitm" id="LowerLater">
+                                <label for="LowerLater">Includes Lowercase Letter <code>[a-z]</code> </label>
                             </div>
                             <div class="item">
-                                <input type="checkbox" checked name="" value="[]" id="upperLater">
-                                <label for="upperLater">Includes Uppercase Letter</label>
+                                <input type="checkbox" checked name="" value='lower' class="incPasitm" id="upperLater">
+                                <label for="upperLater">Includes Uppercase Letter [A-Z]</label>
                             </div>
                             <div class="item">
-                                <input type="checkbox" checked name="" value="[]" id="InclueNumber">
-                                <label for="InclueNumber">Includes Number</label>
+                                <input type="checkbox" checked name="" value='number' class="incPasitm"
+                                    id="InclueNumber">
+                                <label for="InclueNumber">Includes Number <code>[0-9]</code></label>
                             </div>
                             <div class="item">
-                                <input type="checkbox" checked name="" value="[]" id="specialChar">
-                                <label for="specialChar">Includes Special Character</label>
+                                <input type="checkbox" checked name="" value='char' class="incPasitm" id="specialChar">
+                                <label for="specialChar">Includes Special Character <code>[()_+{}:<>[]]</code></label>
                             </div>
                             <div class="item">
-                                <input type="checkbox" checked name="" value="[]" id="Symbol">
-                                <label for="Symbol">Includes Symbols</label>
+                                <input type="checkbox" checked name="" value='symbol' class="incPasitm" id="Symbol">
+                                <label for="Symbol">Includes Symbols <code>['!@#$%^&*';]</code></label>
                             </div>
 
                         </div>
@@ -235,7 +236,10 @@
         </div>
 
     </div>
+
+
 </body>
 <script src="password.js"></script>
+<script src="gen_password.js"></script>
 
 </html>
