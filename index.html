@@ -21,7 +21,7 @@
     </div>
 
     <!-- header  -->
-    <div class="pg_header">
+    <!-- <div class="pg_header">
         <div class="container">
             <div class="left">
                 <div class="h_nav">
@@ -43,89 +43,96 @@
                 <i class="fa fa-user"></i>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- password wrapper  -->
-    <div id="generate_wrapper" class="password_activ">
-
-        <div class="gen_wrapper">
-            <div class="gen_pas_header">
-                <div class="title">Generate Strong Password</div>
-                <button class="gen_pas_close_btn"
-                    onclick="this.parentElement.parentElement.parentElement.classList.remove('password_active')">&times</button>
-            </div>
-            <div class="hr hr_black"></div>
-
-            <div class="gen_pas_body">
-                <div class="box gen_pas_label">
-                    <label class="label" for="passLength">Password Length (Minimum 6 characters):</label>
-                    <div class="PB-range-slider-div">
-                        <input type="range" min="12" max="100" value="12" class="PB-range-slider" id="myRange">
-                        <p class="PB-range-slidervalue">12</p>
-                    </div>
-                </div>
-
-
-                <div class="box gen_pas_contain">
-
-                    <div class="gen_pass_element">
-                        <div class="top">
-                            <div class="label" for="">Password Contains </div>
-                            <!-- <button class="pas_contain_add_btn">Add</button> -->
-                        </div>
-                        <div class="hr hr_black"></div>
-
-                        <div class="body">
-                            <div class="item">
-                                <input type="checkbox" checked name="" value='upper' class="incPasitm" id="LowerLater">
-                                <label for="LowerLater">Includes Lowercase Letter <code>[a-z]</code> </label>
-                            </div>
-                            <div class="item">
-                                <input type="checkbox" checked name="" value='lower' class="incPasitm" id="upperLater">
-                                <label for="upperLater">Includes Uppercase Letter [A-Z]</label>
-                            </div>
-                            <div class="item">
-                                <input type="checkbox" checked name="" value='number' class="incPasitm"
-                                    id="InclueNumber">
-                                <label for="InclueNumber">Includes Number <code>[0-9]</code></label>
-                            </div>
-                            <div class="item">
-                                <input type="checkbox" checked name="" value='char' class="incPasitm" id="specialChar">
-                                <label for="specialChar">Includes Special Character <code>[()_+{}:<>[]]</code></label>
-                            </div>
-                            <div class="item">
-                                <input type="checkbox" checked name="" value='symbol' class="incPasitm" id="Symbol">
-                                <label for="Symbol">Includes Symbols <code>['!@#$%^&*';]</code></label>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="gen_pass_order">
-
-                    </div>
-                </div>
-
-                <div class="box gen_pas_display">
-                    <!-- <label class="label" for="">Generated Password will be displayes here</label> -->
-
-                    <div class="display_box">
-                        <input class="password_display" type="text" placeholder="Password Display..." readonly />
-                        <button class="copy_btn" onclick="copyPassword()"> <img src="img/copy.png" alt="">
-                            copy</button>
-                        <button class="new_btn" onclick="createPassword()">New</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 
     <div class="viewBox">
 
         <!-- view box body -->
         <div class="viewBox-body">
+            <!-- password wrapper  -->
+            <div id="generate_wrapper" class="password_activ">
+
+                <div class="gen_wrapper">
+                    <div class="gen_pas_header">
+                        <div class="title">Generate Strong Password</div>
+                        <button class="gen_pas_close_btn"
+                            onclick="this.parentElement.parentElement.parentElement.classList.remove('password_active')">&times</button>
+                    </div>
+                    <div class="hr hr_black"></div>
+
+                    <div class="gen_pas_body">
+
+                        <div class="box gen_pas_label">
+                            <label class="label" for="passLength">Password Length (Minimum 6 characters):</label>
+                            <div class="hr hr_black"></div>
+                            <div class="PB-range-slider-div">
+                                <input type="range" min="12" max="100" value="12" class="PB-range-slider" id="myRange">
+                                <p class="PB-range-slidervalue">12</p>
+                            </div>
+                        </div>
+
+                        <div class="box gen_pas_contain">
+
+                            <div class="gen_pass_element">
+                                <div class="top">
+                                    <div class="label" for="">Password Contains </div>
+                                    <!-- <button class="pas_contain_add_btn">Add</button> -->
+                                </div>
+                                <div class="hr hr_black"></div>
+
+                                <div class="body" id="passwordContainsItemBody">
+                                    <div class="item">
+                                        <input type="checkbox" checked name="" value='upper' class="incPasitm"
+                                            id="LowerLater">
+                                        <label for="LowerLater">Includes Lowercase Letter <code>[a-z]</code> </label>
+                                    </div>
+                                    <div class="item">
+                                        <input type="checkbox" checked name="" value='lower' class="incPasitm"
+                                            id="upperLater">
+                                        <label for="upperLater">Includes Uppercase Letter [A-Z]</label>
+                                    </div>
+                                    <div class="item">
+                                        <input type="checkbox" checked name="" value='number' class="incPasitm"
+                                            id="InclueNumber">
+                                        <label for="InclueNumber">Includes Number <code>[0-9]</code></label>
+                                    </div>
+                                    <div class="item">
+                                        <input type="checkbox" checked name="" value='char' class="incPasitm"
+                                            id="specialChar">
+                                        <label for="specialChar">Includes Special Character <code>[()_+{}:<>
+                                                    []]</code></label>
+                                    </div>
+                                    <div class="item">
+                                        <input type="checkbox" checked name="" value='symbol' class="incPasitm"
+                                            id="Symbol">
+                                        <label for="Symbol">Includes Symbols <code>['!@#$%^&*';]</code></label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="gen_pass_order">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="box gen_pas_display">
+                        <!-- <label class="label" for="">Generated Password will be displayes here</label> -->
+
+                        <div class="display_box">
+                            <input class="password_display" type="text" placeholder="Password Display..." readonly />
+                            <button class="copy_btn" onclick="copyPassword()"> <img src="img/copy.png" alt="">
+                                copy</button>
+                            <button class="new_btn" onclick="createPassword()">New</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
             <div class="left">
                 <div class="title">

@@ -72,21 +72,21 @@ function checkAndShow() {
         //check length of passowrd
         if ((password).length < 12) {
             // showTestOnFormText(`Your Password Must Be At Least 8 Characters Long`);
-            checkAdnShowList(0, "min_cr");
+            checkAdnShowList(0, "min_cr", "12 character best for strong password");
             checkAndShowPercent()
         } else {
             //password more than 12 ch
             // checkAndShowPercent(1);
-            checkAdnShowList(1, "min_cr");
+            checkAdnShowList(1, "min_cr", "Over 12 character, Great !");
         }
 
         //check if password start with special character or not with regular expression
         // checkStartWithSpChr();
         if (password.search(/^[!@#$%^&*]/g) == 0) {
-            checkAdnShowList(1, "spe_cr");
+            checkAdnShowList(1, "spe_cr", "Start with char, Great.");
             checkAndShowPercent();
         } else {
-            checkAdnShowList(0, "spe_cr");
+            checkAdnShowList(0, "spe_cr", "Required a char at first!. You start with Number or Alphabet.");
             // checkAndShowPercent(1);
         }
 
@@ -107,12 +107,21 @@ function checkAndShow() {
     }
 
     if (pasInput.value == "") {
-        listItem.forEach(li => {
-            li.classList.remove('is_error');
-            li.classList.remove("is_correct");
-            li.classList.remove('invisible')
-            checkAndShowPercent(1);
-        })
+        const html =
+            `<li class="list_item spe_cr">Start with special character.</li>
+            <li class="list_item uppercase"> Upper case character </li>
+            <li class="list_item number"> Include number. </li>
+            <li class="list_item lowercase"> Lower case characters </li>
+            <li class="list_item special"> Include special character </li>
+            <li class="list_item space"> No spaces allowed in password! </li>
+            <li class="list_item min_cr">Minimun 12 character.</li>`;
+        // listItem.forEach(li => {
+        //     li.classList.remove('is_error');
+        //     li.classList.remove("is_correct");
+        //     li.classList.remove('invisible')
+        // })
+        document.getElementsByClassName('right-list')[0].innerHTML = html;
+        checkAndShowPercent(1);
     }
 
 }
@@ -134,22 +143,24 @@ function showTestOnFormText(val, condition) {
 }
 
 // check password and show in password check list 
-function checkAdnShowList(is_cor, tr) {
-
+function checkAdnShowList(is_cor, tr, options) {
+    console.log(options);
     if (tr) {
         if (is_cor) {
             // console.log("if statement");
             document.getElementsByClassName(tr)[0].classList.remove('invisible');
             document.getElementsByClassName(tr)[0].classList.remove("is_error");
             document.getElementsByClassName(tr)[0].classList.add("is_correct");
+            document.getElementsByClassName(tr)[0].innerHTML = options;
         } else {
             // console.log("else statement");
             document.getElementsByClassName(tr)[0].classList.remove("is_correct")
             document.getElementsByClassName(tr)[0].classList.add('is_error');
             document.getElementsByClassName(tr)[0].classList.remove('invisible');
+            document.getElementsByClassName(tr)[0].innerHTML = options;
+
         }
     }
-
 
 }
 
@@ -196,18 +207,18 @@ function checkAndShowPercent(is_default) {
 }
 
 
-function animation() {
-    // console.log(pasInput.value);
-    requestAnimationFrame(animation);
-}
+// function animation() {
+//     // console.log(pasInput.value);
+//     requestAnimationFrame(animation);
+// }
 // check start with any special char 
 async function checkStartWithSpChr() {
     // var regExp = /[!@#$%^&*]/g;
     if (password.match(/^[!@#$%^&*]/g) == 0) {
-        checkAdnShowList(1, "spe_cr");
+        checkAdnShowList(1, "spe_cr", 'Done !');
         checkAndShowPercent();
     } else {
-        checkAdnShowList(0, "spe_cr");
+        checkAdnShowList(0, "spe_cr", "Required !");
         // checkAndShowPercent(1);
     }
 
@@ -218,10 +229,10 @@ async function checkNumberCount() {
     let checkNumberCount = pasInput.value.match(/[0-9]/g); //how many number include in password
     // console.log("number : " + checkNumberCount.length);
     if (checkNumberCount.length > 3) {
-        checkAdnShowList(1, "number");
+        checkAdnShowList(1, "number", "Required Number Included, Great !");
         checkAndShowPercent();
     } else {
-        checkAdnShowList(0, 'number')
+        checkAdnShowList(0, 'number', "Minimum 3 (0-9) number required for strong.")
         // checkAndShowPercent(1);
     }
     return true;
@@ -231,10 +242,10 @@ async function checkNumberCount() {
 async function checkUpperCase() {
     let checkUpperCount = pasInput.value.match(/[A-Z]/g);
     if (checkUpperCount.length > 3) {
-        checkAdnShowList(1, "uppercase");
+        checkAdnShowList(1, "uppercase", "Required UpperCase Included, Great !");
         checkAndShowPercent();
     } else {
-        checkAdnShowList(0, 'uppercase');
+        checkAdnShowList(0, 'uppercase', "Minimum 3 Upper Case letter required for strong.");
     }
     return true;
 }
@@ -243,10 +254,10 @@ async function checkUpperCase() {
 async function checkLowerCase() {
     let checkLowerCount = pasInput.value.match(/[a-z]/g);
     if (checkLowerCount.length > 3) {
-        checkAdnShowList(1, "lowercase");
+        checkAdnShowList(1, "lowercase", "Required LowerCase Included, Great !");
         checkAndShowPercent()
     } else {
-        checkAndShowPercent(0, "lowercase")
+        checkAndShowPercent(0, "lowercase", "Minimum 3 LowerCase (a-z) required for strong")
     }
     return true;
 }
@@ -255,10 +266,10 @@ async function checkLowerCase() {
 async function checkSpecialChar() {
     let specialCharCount = pasInput.value.match(/[!@#$%^&*]/g);
     if (specialCharCount.length > 3) {
-        checkAdnShowList(1, "special")
+        checkAdnShowList(1, "special", "Required Character Included, Great !")
         checkAndShowPercent();
     } else {
-        checkAdnShowList(0, "special");
+        checkAdnShowList(0, "special", "At last 3 character required.");
     }
     return true;
 }
@@ -267,10 +278,10 @@ async function checkSpecialChar() {
 async function checkWhiteSpace() {
     var regex = /\s/g;
     if ((pasInput.value).match(regex)) {
-        checkAdnShowList(0, "space");
+        checkAdnShowList(0, "space", " May have one or multiple space.");
         checkAndShowPercent();
     } else {
-        checkAdnShowList(1, "space");
+        checkAdnShowList(1, "space", "Found no space, Great !");
     }
     return true;
 }
@@ -278,5 +289,4 @@ async function checkWhiteSpace() {
 
 
 //check password start with special charcater
-animation()
-
+// animation()
