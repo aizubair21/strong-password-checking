@@ -1,0 +1,39 @@
+#main_nav {
+    margin: 0 auto;
+    background-color: lightgray;
+
+    .main_nav_wrapper {
+        margin: 0 auto;
+        max-width: 1000px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .left {
+        .fa {
+            margin-right: 8px;
+        }
+    }
+
+    .middle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .right {}
+
+    .nav_item {
+        padding: 10px 15px;
+        cursor: pointer;
+        /* color: #fff; */
+
+        &:hover {
+            background-color: aliceblue;
+        }
+
+    }
+
+}
