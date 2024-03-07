@@ -78,7 +78,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: start;
-    height: auto;
+    height: 400px;
     /* padding: 25px; */
     border-radius: 15px;
     position: relative;
@@ -111,27 +111,41 @@ body {
     .right {
         /* width: 300px; */
         /* width: 100%; */
+        background-color: #1D3153;
+        color: #fff;
+        height: 100%;
 
         .right-list {
             padding: 10px 15px;
+            color: #fff;
 
-            .list_item {}
+            .list_item {
+                color: #ffffff;
+            }
 
             .invisible {
                 opacity: .4;
             }
 
             .is_error {
-                color: red;
+                color: #ff5757;
                 font-weight: 600;
 
             }
 
             .is_correct {
-                color: green;
+                color: #00dd09;
                 font-weight: 600;
 
             }
+        }
+
+        .title {
+            color: #ffffff;
+        }
+
+        .title p {
+            color: #ffffff;
         }
     }
 
